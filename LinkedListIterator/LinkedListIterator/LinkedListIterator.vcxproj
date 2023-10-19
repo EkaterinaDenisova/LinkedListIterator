@@ -128,10 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AbsIterator.cpp" />
+    <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="LinkedListIterator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbsIterator.h" />
+    <ClInclude Include="LinkedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

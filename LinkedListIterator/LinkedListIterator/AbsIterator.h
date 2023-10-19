@@ -7,6 +7,7 @@ class AbsIterator
 {
     // оператор перехода на следующий элемент
     virtual void  operator++() const {};
+    //virtual void operator++(int) const {};
     // оператор получения данных их элемента
     virtual T& operator*() const = 0;
     // операторы сравнения
