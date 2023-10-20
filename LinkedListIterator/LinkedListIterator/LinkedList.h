@@ -2,7 +2,7 @@
 //author: Денисова Екатерина
 
 #include <iostream>
-
+#include "AbsIterator.h"
 // класс узла списка
 template <typename T>
 class Node {
@@ -29,7 +29,7 @@ public:
     LinkedList() {
         head = nullptr;
     }
-        
+
     // деструктор
     // удаляются все узлы в списке
     ~LinkedList() {
@@ -40,8 +40,69 @@ public:
         }
     }
 
+    void addNode(T& data);
+    // Удаление узла по значению
+    void removeNode(T& data);
+    bool searchNode(T& data);
+    void printList() ;
+
+
+    // класс итератора для Linked List
+    template<class T>
+    class LinkedListIterator() : public AbsIterator<T> {
+    private:
+        Node<T>* current;  // Текущий узел
+
+    public:
+        // конструктор с параметром
+        LinkedListIterator(Node<T>*x) {
+            current = x;
+        }
+
+        // оператор сравнения
+        bool operator==(const LinkedListIterator<T>&o) const override {
+            return current == o.current;
+        }
+
+        bool operator!=(const LinkedListIterator<T>&o) const override {
+            return !(current == o.current);
+        }
+
+        // оператор доступа к данным
+        T& operator*() const override {
+            //возвращает данные текущего узла
+            return current->data;
+        }
+
+        // оператор перехода на следующий узел
+        LinkedListIterator& operator++() override {
+            //если текущий не равен nullptr
+            if (current != nullptr) {
+                //переходим к следующему узлу
+                current = current->next;
+            }
+            //возвращаем ссылку на текущий объект
+            return *this;
+        }
+
+
+    };
+
+
+    LinkedListIterator<T> begin() const {
+        return LinkedListIterator(head);
+    }
+
+    LinkedListIterator<T> end() const {
+        return LinkedListIterator(nullptr);
+    }
+
+};
+
+
     // добавление узла в список
-    void addNode(T& data) {
+    template<typename T>
+    void LinkedList<T>::addNode(T& data) {
         Node<T>* newNode = new Node<T>(data);
 
         // если список пустой, то создаём первый элемент
@@ -59,7 +120,8 @@ public:
     }
 
     // Удаление узла по значению
-    void removeNode(T& data) {
+    template<typename T>
+    void LinkedList<T>::removeNode(T& data) {
         // если список не пустой
         if (head != nullptr) {
 
@@ -92,7 +154,8 @@ public:
     // поиск узла
     // true, если есть узел
     // иначе false
-    bool searchNode(T& data) {
+    template<typename T>
+    bool LinkedList<T>::searchNode(T & data) {
         Node<T>* current = head;
         while (current != nullptr) {
             if (current->data == data) {
@@ -104,7 +167,8 @@ public:
     }
 
     // вывод списка в консоль
-    void printList() {
+    template<typename T>
+    void LinkedList<T>::printList() {
         Node<T>* current = head;
         while (current != nullptr) {
             std::cout << current->data << " ";
@@ -112,5 +176,4 @@ public:
         }
         std::cout << std::endl;
     }
-};
 
