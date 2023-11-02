@@ -2,8 +2,8 @@
 
 #include "../LinkedListIterator/LinkedList.h"
 
-// author: Денисова Екатерина
-// тестирование класса итератора для односвязного списка
+// author: Р”РµРЅРёСЃРѕРІР° Р•РєР°С‚РµСЂРёРЅР°
+// С‚РµСЃС‚РёСЂРѕРІР°РЅРёРµ РєР»Р°СЃСЃР° РёС‚РµСЂР°С‚РѕСЂР° РґР»СЏ РѕРґРЅРѕСЃРІСЏР·РЅРѕРіРѕ СЃРїРёСЃРєР°
 
 /*LinkedList<int> CreateList1() {
 	LinkedList<int> l;
@@ -15,7 +15,7 @@
 	return l;
 }*/
 
-// тестирование метода begin
+// С‚РµСЃС‚РёСЂРѕРІР°РЅРёРµ РјРµС‚РѕРґР° begin
 TEST(TestListIterator, TestBegin) {
 
 	LinkedList<int> l;
@@ -35,7 +35,7 @@ TEST(TestListIterator, TestBegin) {
 	//EXPECT_TRUE(true);
 }
 
-// тестирование оператора *
+// С‚РµСЃС‚РёСЂРѕРІР°РЅРёРµ РѕРїРµСЂР°С‚РѕСЂР° *
 TEST(TestListIterator, TestData) {
 
 	LinkedList<int> l;
@@ -60,7 +60,7 @@ TEST(TestListIterator, TestData) {
 	//EXPECT_TRUE(true);
 }
 
-// тестирование оператора ==
+// С‚РµСЃС‚РёСЂРѕРІР°РЅРёРµ РѕРїРµСЂР°С‚РѕСЂР° ==
 TEST(TestListIterator, TestEqual) {
 
 	LinkedList<int> l;
@@ -82,7 +82,7 @@ TEST(TestListIterator, TestEqual) {
 
 }
 
-// тестирование оператора !=
+// С‚РµСЃС‚РёСЂРѕРІР°РЅРёРµ РѕРїРµСЂР°С‚РѕСЂР° !=
 TEST(TestListIterator, TestNotEqual) {
 
 	LinkedList<int> l;
@@ -104,7 +104,7 @@ TEST(TestListIterator, TestNotEqual) {
 
 }
 
-// тестирование оператора ++
+// С‚РµСЃС‚РёСЂРѕРІР°РЅРёРµ РѕРїРµСЂР°С‚РѕСЂР° ++
 TEST(TestListIterator, TestInc) {
 
 	LinkedList<int> l;
