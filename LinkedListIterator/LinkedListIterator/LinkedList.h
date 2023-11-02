@@ -2,6 +2,7 @@
 //author: Денисова Екатерина
 
 #include <iostream>
+#include <vector>
 #include "AbsIterator.h"
 // класс узла списка
 template <typename T>
@@ -11,8 +12,8 @@ public:
     Node<T>* next;
 
     // конструктор с параметром
-    Node(T& data1)  {
-        data = data;
+    Node(const T& data1)  {
+        this->data = data1;
         next = nullptr;
     }
 };
@@ -40,16 +41,20 @@ public:
         }
     }
 
-    void addNode(T& data);
+    // добавление узла в конец списка
+    void addNode(const T& data);
     // Удаление узла по значению
     void removeNode(T& data);
+    // поиск узла по значению
+    // true если узел найден, иначе false
     bool searchNode(T& data);
-    void printList() ;
+    // вывод списка в консоль
+    void printList();
 
 
     // класс итератора для Linked List
-    template<class T>
-    class LinkedListIterator() : public AbsIterator<T> {
+    template<typename T>
+    class LinkedListIterator : public AbsIterator<T> {
     private:
         Node<T>* current;  // Текущий узел
 
@@ -60,12 +65,12 @@ public:
         }
 
         // оператор сравнения
-        bool operator==(const LinkedListIterator<T>&o) const override {
-            return current == o.current;
+        bool operator==(const AbsIterator<T>& o) const override {
+            return current == dynamic_cast<const LinkedListIterator<T>&>(o).current;
         }
 
-        bool operator!=(const LinkedListIterator<T>&o) const override {
-            return !(current == o.current);
+        bool operator!=(const AbsIterator<T>& o) const override {
+            return !(current == dynamic_cast<const LinkedListIterator<T>&>(o).current);
         }
 
         // оператор доступа к данным
@@ -90,11 +95,11 @@ public:
 
 
     LinkedListIterator<T> begin() const {
-        return LinkedListIterator(head);
+        return LinkedListIterator<T>(head);
     }
 
     LinkedListIterator<T> end() const {
-        return LinkedListIterator(nullptr);
+        return LinkedListIterator<T>(nullptr);
     }
 
 };
@@ -102,7 +107,7 @@ public:
 
     // добавление узла в список
     template<typename T>
-    void LinkedList<T>::addNode(T& data) {
+    void LinkedList<T>::addNode(const T& data) {
         Node<T>* newNode = new Node<T>(data);
 
         // если список пустой, то создаём первый элемент
