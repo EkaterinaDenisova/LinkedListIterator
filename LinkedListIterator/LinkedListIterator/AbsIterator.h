@@ -14,5 +14,6 @@ class AbsIterator
     virtual bool operator==(const AbsIterator& o) const = 0;
     virtual bool operator!=(const AbsIterator& o) const = 0;
 
+
 };
 
