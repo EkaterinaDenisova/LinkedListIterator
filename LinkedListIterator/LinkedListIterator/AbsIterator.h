@@ -1,16 +1,16 @@
 #pragma once
-//author: Денисова Екатерина
+//author: Р”РµРЅРёСЃРѕРІР° Р•РєР°С‚РµСЂРёРЅР°
 
 template <typename T>
-// абстрактный класс итератора
+// Р°Р±СЃС‚СЂР°РєС‚РЅС‹Р№ РєР»Р°СЃСЃ РёС‚РµСЂР°С‚РѕСЂР°
 class AbsIterator
 {
-    // оператор перехода на следующий элемент
+    // РѕРїРµСЂР°С‚РѕСЂ РїРµСЂРµС…РѕРґР° РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЌР»РµРјРµРЅС‚
     virtual AbsIterator<T>& operator++() =0;
     //virtual void operator++(int) const {};
-    // оператор получения данных их элемента
+    // РѕРїРµСЂР°С‚РѕСЂ РїРѕР»СѓС‡РµРЅРёСЏ РґР°РЅРЅС‹С… РёС… СЌР»РµРјРµРЅС‚Р°
     virtual T& operator*() const = 0;
-    // операторы сравнения
+    // РѕРїРµСЂР°С‚РѕСЂС‹ СЃСЂР°РІРЅРµРЅРёСЏ
     virtual bool operator==(const AbsIterator& o) const = 0;
     virtual bool operator!=(const AbsIterator& o) const = 0;
 
