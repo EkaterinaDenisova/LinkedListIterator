@@ -17,7 +17,7 @@
 
 // тестирование метода begin
 TEST(TestListIterator, TestBegin) {
-
+	
 	LinkedList<int> l;
 	l.addNode(2);
 	l.addNode(5);
@@ -28,11 +28,11 @@ TEST(TestListIterator, TestBegin) {
 	//LinkedList<int> l = CreateList1();
 
 	LinkedList<int>::LinkedListIterator<int> it1 = l.begin();
+	
 
 
-
-	EXPECT_EQ(*it1, 2);
-	//EXPECT_TRUE(true);
+  EXPECT_EQ(*it1, 2);
+  //EXPECT_TRUE(true);
 }
 
 // тестирование оператора *
@@ -49,7 +49,7 @@ TEST(TestListIterator, TestData) {
 
 	LinkedList<int>::LinkedListIterator<int> it1 = l.begin();
 
-	std::vector<int> arr, arr1 = { 2 , 5, 12, -3, 8 };
+	std::vector<int> arr, arr1 = {2 , 5, 12, -3, 8};
 
 	for (LinkedList<int>::LinkedListIterator<int> it1 = l.begin(); it1 != l.end(); ++it1) {
 		arr.push_back(*it1);
@@ -99,7 +99,7 @@ TEST(TestListIterator, TestNotEqual) {
 
 	EXPECT_TRUE(!(it1 != it2));
 	++it1;
-
+	
 	EXPECT_TRUE(it1 != it2);
 
 }
@@ -117,11 +117,11 @@ TEST(TestListIterator, TestInc) {
 	//LinkedList<int> l = CreateList1();
 
 	LinkedList<int>::LinkedListIterator<int> it1 = l.begin();
+	
 
-
-	EXPECT_EQ(*it1, 2);
+	EXPECT_EQ(*it1,2);
 	++it1;
-
+	
 	EXPECT_EQ(*it1, 5);
 	++it1;
 	EXPECT_EQ(*it1, 12);
@@ -131,6 +131,6 @@ TEST(TestListIterator, TestInc) {
 	EXPECT_EQ(*it1, 8);
 	++it1;
 	EXPECT_EQ(it1, l.end());
-
+	
 
 }
