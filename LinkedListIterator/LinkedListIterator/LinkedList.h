@@ -47,9 +47,9 @@ public:
     void removeNode(T& data);
     // поиск узла по значению
     // true если узел найден, иначе false
-    bool searchNode(T& data);
+    bool searchNode(T& data) const;
     // вывод списка в консоль
-    void printList();
+    void printList() const;
 
 
     // класс итератора для Linked List
@@ -64,11 +64,13 @@ public:
             current = x;
         }
 
-        // оператор сравнения
+        // операторы сравнения
+        // равенство
         bool operator==(const AbsIterator<T>& o) const override {
             return current == dynamic_cast<const LinkedListIterator<T>&>(o).current;
         }
 
+        // неравенство
         bool operator!=(const AbsIterator<T>& o) const override {
             return !(current == dynamic_cast<const LinkedListIterator<T>&>(o).current);
         }
@@ -79,7 +81,7 @@ public:
             return current->data;
         }
 
-        // оператор перехода на следующий узел
+        // оператор pre-increment: перехода на следующий узел
         LinkedListIterator& operator++() override {
             //если текущий не равен nullptr
             if (current != nullptr) {
@@ -93,7 +95,7 @@ public:
 
     };
 
-
+    // методы begin и end возвращают итератор на начало списка и на nullptr соответственно
     LinkedListIterator<T> begin() const {
         return LinkedListIterator<T>(head);
     }
@@ -160,7 +162,7 @@ public:
     // true, если есть узел
     // иначе false
     template<typename T>
-    bool LinkedList<T>::searchNode(T & data) {
+    bool LinkedList<T>::searchNode(T & data) const {
         Node<T>* current = head;
         while (current != nullptr) {
             if (current->data == data) {
@@ -173,7 +175,7 @@ public:
 
     // вывод списка в консоль
     template<typename T>
-    void LinkedList<T>::printList() {
+    void LinkedList<T>::printList() const{
         Node<T>* current = head;
         while (current != nullptr) {
             std::cout << current->data << " ";
